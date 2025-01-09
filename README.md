@@ -1,142 +1,99 @@
-# Projeto: Previsão de Cliques em Anúncios
+# **Previsão de Cliques em Anúncios de Produtos Hospitalares**
 
-Este projeto tem como objetivo criar um modelo de aprendizado de máquina para prever a probabilidade de cliques em anúncios, com base em características do usuário. O modelo foi implementado com ***Regressão Logística***.
-
----
-
-## Estrutura do Projeto
-
-1. **Análise do Problema e Configuração Inicial**:
-   - Compreensão do problema de previsão de cliques.
-   - Configuração inicial do ambiente e importação das bibliotecas necessárias.
-
-2. **Pré-Processamento e Engenharia de Dados**:
-   - Tratamento de valores ausentes.
-   - Codificação de variáveis categóricas (One-Hot Encoding).
-   - Normalização de variáveis numéricas.
-   - Divisão do conjunto de dados em treino e teste.
-
-3. **Treinamento e Avaliação Inicial do Modelo**:
-   - Treinamento do modelo de Regressão Logística.
-   - Avaliação do desempenho usando métricas como:
-     - Acurácia
-     - Precisão
-     - Recall
-     - F1-Score
-     - Área sob a curva ROC (AUC-ROC).
-
-4. **Interpretação e Ajustes no Modelo**:
-   - Análise de coeficientes para identificar a relevância de cada variável.
-   - Ajuste de hiperparâmetros usando GridSearchCV.
-   - Reavaliação do modelo ajustado.
-
-5. **Deploy Simples**:
-
+Este projeto tem como objetivo criar um modelo de aprendizado de máquina para prever a probabilidade de cliques em anúncios patrocinados de produtos hospitalares, com base em características do usuário e informações sobre os anúncios. O modelo utiliza **Regressão Logística Binária**, uma técnica de classificação amplamente utilizada em problemas de marketing digital.
 
 ---
 
-## Como Executar o Projeto
-
-### 1. Configuração do Ambiente
-
-Certifique-se de que as seguintes bibliotecas estão instaladas:
-
-pandas==1.5.2
-numpy==1.21.0
-scikit-learn==1.2.0
-matplotlib==3.5.1
-seaborn==0.11.2
-joblib==1.2.0
-imblearn==0.9.0
-xgboost==1.6.2
-
-Instale as dependências com o comando:
-
-```bash
-pip install -r requirements.txt
-```
-
-> **Nota:** Se o arquivo `requirements.txt` não estiver disponível, instale as bibliotecas individualmente usando `pip`.
+## **Objetivo do Projeto**
+- Prever se um cliente clicará ou não em um anúncio, baseado em dados como demografia, comportamento e características do anúncio.
+- Utilizar técnicas de **aprendizado supervisionado** para criar insights que podem ajudar a otimizar campanhas de marketing digital.
 
 ---
 
-### 2. Executando o Modelo
+## **Estrutura do Projeto**
 
-#### **Treinamento do Modelo**
-Para treinar o modelo, execute o notebook Jupyter fornecido: `clicking.ipynb`. O notebook contém todas as etapas desde a análise inicial até o treinamento e avaliação do modelo.
+### **1. Análise do Problema e Configuração Inicial**
+- Compreensão do problema de previsão de cliques.
+- Configuração inicial do ambiente e importação das bibliotecas necessárias.
 
----
+### **2. Pré-Processamento e Engenharia de Dados**
+- Tratamento de valores ausentes.
+- Codificação de variáveis categóricas (**One-Hot Encoding**).
+- Normalização de variáveis numéricas.
+- Divisão do conjunto de dados em treino e teste.
 
-## Resultados
+### **3. Treinamento e Avaliação Inicial do Modelo**
+- Treinamento do modelo de **Regressão Logística**.
+- Avaliação do desempenho usando métricas como:
+  - **Acurácia**
+  - **Precisão**
+  - **Recall**
+  - **F1-Score**
+  - **Área sob a curva ROC (AUC-ROC)**
 
-- **Modelo**: Regressão Logística
-- **Métricas**:
-  - Acurácia: 84%
-  - ROC-AUC: 0.85
-- **Variáveis Relevantes**:
-  - Tempo no site (`Time_Spent_on_Site`)
-  - Número de páginas visualizadas (`Number_of_Pages_Viewed`)
-
----
-
-## Estrutura do Projeto
-
-ML_LOGISTIC_CLICK/
-│
-├── ads_clicking.csv           # Conjunto de dados usado para treinar e avaliar o modelo
-├── clicking.ipynb             # Notebook Jupyter com o código completo do projeto
-├── feature_columns.pkl        # Arquivo serializado com as colunas utilizadas no modelo
-├── scaler.pkl                 # Arquivo serializado com o objeto StandardScaler usado na normalização
-├── requirements.txt           # Lista de dependências do projeto
-├── README.md                  # Documentação do projeto
-└── Restart                    # (Indefinido, pode ser um marcador ou arquivo temporário)
-
-```
+### **4. Interpretação e Ajustes no Modelo**
+- Análise dos coeficientes do modelo para entender o impacto das variáveis.
+- Ajuste de hiperparâmetros utilizando **GridSearchCV**.
 
 ---
 
-## **Como Executar o Projeto**
+## **Ferramentas e Tecnologias**
+- **Python**
+- **Bibliotecas:**
+  - `pandas` - Manipulação e análise de dados.
+  - `numpy` - Computação numérica.
+  - `matplotlib` e `seaborn` - Visualização de dados.
+  - `scikit-learn` - Construção e avaliação do modelo de machine learning.
 
-1. **Clone o repositório**:
+---
+
+## **Dataset**
+Os dados utilizados neste projeto foram obtidos do Kaggle:  
+📂 **[Online Ad Click Prediction Dataset](https://www.kaggle.com/datasets/natchananprabhong/online-ad-click-prediction-dataset?resource=download)**
+
+### **Características do Dataset:**
+- Variável dependente: `Clicked` (se o cliente clicou ou não no anúncio).
+- Variáveis independentes incluem:
+  - Dados demográficos do usuário.
+  - Informações sobre o anúncio.
+  - Comportamento anterior de navegação.
+
+---
+
+## **Resultados**
+- **Modelo:** Regressão Logística
+- **Métricas:**
+  - **Acurácia:** 84%
+  - **ROC-AUC:** 0.85
+- **Variáveis Relevantes:**
+  - **Tempo no site** (`Time_Spent_on_Site`): Clientes que passaram mais tempo no site têm maior probabilidade de clicar no anúncio.
+  - **Número de páginas visualizadas** (`Number_of_Pages_Viewed`): Quanto mais páginas o cliente visualiza, maior a probabilidade de clicar.
+
+---
+
+## **Como Reproduzir o Projeto**
+
+1. **Clone este repositório:**
    ```bash
-   git clone <link_do_repositorio>
-   cd ML_LOGISTIC_CLICK
+   git clone https://github.com/SeuUsuario/ML_modelo_logistico_binario.git
    ```
 
-2. **Configure o ambiente virtual** (opcional, mas recomendado):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   venv\Scripts\activate     # Windows
-   ```
-
-3. **Instale as dependências**:
+2. **Instale as dependências:**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Abra o notebook**:
-   Inicie o Jupyter Notebook e abra `clicking.ipynb`:
-   ```bash
-   jupyter notebook
-   ```
-
-5. **Execute as células no notebook**:
-   Siga as etapas no notebook para carregar os dados, treinar o modelo, e realizar as previsões.
+3. **Execute o notebook Jupyter:**
+   Abra o arquivo `clicking.ipynb` e execute as células para reproduzir os resultados.
 
 ---
 
-## **Contribuição**
-Se você encontrar problemas ou quiser contribuir para melhorar o modelo, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+## **Próximos Passos**
+- Explorar técnicas mais avançadas, como árvores de decisão e ensemble methods.
+- Implementar o modelo em um ambiente web utilizando **Flask** ou **Streamlit** para previsões em tempo real.
 
 ---
 
-## **Licença**
-Este projeto está sob a licença MIT. Sinta-se à vontade para usar e modificar.
+## **Contribuições**
+Contribuições são bem-vindas! Caso tenha sugestões ou encontre problemas, sinta-se à vontade para abrir uma **issue** ou criar um **pull request**.
 
-
-Sinta-se à vontade para contribuir com melhorias ou abrir issues para discutir ideias!
-
-
-
-# ML_modelo_logistico_binario
